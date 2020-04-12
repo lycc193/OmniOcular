@@ -374,7 +374,7 @@
 				case "TERRA":{return GREEN + " Terra" + WHITE;}
 				case "IGNIS":{return RED + " Ignis" + WHITE;}
 				case "PERDITIO":{return BLACK + " Perditio" + WHITE;}
-				case "L":{return AQUA + " L" + WHITE;}
+				case "mL":{return AQUA + " L" + WHITE;}
 				case "A":{return AQUA + " A" + WHITE;}
 				case "Angle":{return DAQUA + " °" + WHITE;}
 				case "个 ":{return AQUA + " 个 " + WHITE;}
@@ -387,9 +387,9 @@
 		}
 	</init>
 
-	<!-- 储罐容量 -->
-	<init>
-		function LiquidCap(LC){
+  <!-- 储罐容量 -->
+  <init>
+    function LiquidCap(LC){
 			switch(LC['gt.mte.id']){
 				case 32733:{return 8000;}
 				case 32752:{return 8000;}
@@ -399,24 +399,53 @@
 				case 32734:{return 32000;}
 				case 32715:{return 32000;}
 				case 32716:{return 64000;}
+				case 32064:{return 64000;}
+				case 32070:{return 64000;}
+				case 32022:{return 64000;}
 				case 32742:{return 128000;}
 				case 32717:{return 256000;}
 				case 32718:{return 256000;}
+				case 32083:{return 512000;}
+				case 32072:{return 1000000;}
+				case 32087:{return 4096000;}
 				case 32719:{return 4096000;}
+
 				case 17001:{return 432000;}
 				case 17002:{return 1728000;}
-				case 17006:{return 3456000;}
 				case 17003:{return 6912000;}
 				case 17004:{return 6912000;}
 				case 17005:{return 110592000;}
+				case 17006:{return 3456000;}
+				case 17007:{return 1728000;}
+				case 17008:{return 2474000;}
+				case 17009:{return 8192000;}
+
 				case 17022:{return 6912000;}
-				case 17026:{return 13824000;}
 				case 17023:{return 27648000;}
 				case 17024:{return 27648000;}
 				case 17025:{return 442368000;}
+				case 17026:{return 13824000;}
+				case 17027:{return 6912000;}
+				case 17028:{return 9896000;}
+				case 17029:{return 32768000;}
+				case 17042:{return 8000000;}
+				case 17043:{return 32000000;}
+				case 17044:{return 32000000;}
+				case 17045:{return 512000000;}
+				case 17046:{return 16000000;}
+				case 17047:{return 8000000;}
+				case 17048:{return 12000000;}
+				case 17049:{return 64000000;}
+				case 17062:{return 32000000;}
+				case 17063:{return 128000000;}
+				case 17064:{return 128000000;}
+				case 17066:{return 64000000;}
+				case 17067:{return 32000000;}
+				case 17068:{return 48000000;}
+				case 17068:{return 256000000;}
 			}
-		}
-	</init>
+    }
+  </init>
 
 	<!-- 坩埚温度上限 -->
 	<init>
@@ -651,115 +680,81 @@
 		}
 	</init>
 
-    <!-- 坩埚 -->
-    <tileentity id = "gt.multitileentity.smeltery">
-		<!-- TODO: 烫伤警告/爆炸警告 -->
-		
-	    <line displayname = "当前温度">
-			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
-        </line>
-		
-		<line displayname = "熔炼物种数">
-			return nbt['gt.materials']['size'] + Unit("种");
-        </line>
-		
-		<line displayname = "熔炼物1-4情况">
-			if(nbt['gt.materials']['0'] != undefined){
-				var str = '';
-				var i = 0;
+  <!-- 坩埚 -->
+  <tileentity id = "gt.multitileentity.smeltery">
+    <line displayname="当前温度">
+      return nbt['gt.temperature']+BLUE+" K"+" / " + KevinCap(nbt['gt.mte.id']) + Unit("K")
+    </line>
+    <line displayname="熔炼物种数">
+      return nbt['gt.materials']['size']+BLUE+" 种"
+    </line>
+    <line displayname="熔炼物1">
+      return (nbt['gt.materials']['0']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['0']['i'],"material")
+    </line>
+    <line displayname="熔炼物2">
+      return (nbt['gt.materials']['1']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['1']['i'],"material")
+    </line>
+    <line displayname="熔炼物3">
+      return (nbt['gt.materials']['2']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['2']['i'],"material")
+    </line>
+    <line displayname="熔炼物4">
+      return (nbt['gt.materials']['3']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['3']['i'],"material")
+    </line>
+    <line displayname="熔炼物5">
+      return (nbt['gt.materials']['4']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['4']['i'],"material")
+    </line>
+    <line displayname="熔炼物6">
+      return (nbt['gt.materials']['5']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['5']['i'],"material")
+    </line>
+    <line displayname="熔炼物7">
+      return (nbt['gt.materials']['6']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['6']['i'],"material")
+    </line>
+    <line displayname="熔炼物8">
+      return (nbt['gt.materials']['7']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['7']['i'],"material")
+    </line>
+    <line displayname="熔炼物9">
+      return (nbt['gt.materials']['8']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['8']['i'],"material")
+    </line>
+  </tileentity>
 
-				while(i < 4){
-					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
-					}
-					if(((i + 1) < 4) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
-						str += " | ";
-					}
-					i++;
-				}
 
-				return str;
-			}
-        </line>
-		
-		<line displayname = "熔炼物5-8情况">
-			if(nbt['gt.materials']['4'] != undefined){
-				var str = '';
-				var i = 4;
-
-				while(i < 8){
-					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
-					}
-					if(((i + 1) < 8) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
-						str += " | ";
-					}
-					i++;
-				}
-
-				return str;
-			}
-        </line>
-		
-		<line displayname = "熔炼物9-12情况">
-			if(nbt['gt.materials']['8'] != undefined){
-				var str = '';
-				var i = 8;
-
-				while(i < 12){
-					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
-					}
-					if(((i + 1) < 12) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
-						str += " | ";
-					}
-					i++;
-				}
-
-				return str;
-			}
-        </line>
-	
-		<line displayname = "熔炼物13-16情况">
-			if(nbt['gt.materials']['12'] != undefined){
-				var str = '';
-				var i = 12;
-
-				while(i < 16){
-					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
-					}
-					if(((i + 1) < 16) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
-						str += " | ";
-					}
-					i++;
-				}
-
-				return str;
-			}
-        </line>
-	
-		<line displayname = "熔炼物17-20情况">
-			if(nbt['gt.materials']['16'] != undefined){
-				var str = '';
-				var i = 16;
-
-				while(i < 20){
-					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
-					}
-					if(((i + 1) < 20) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
-						str += " | ";
-					}
-					i++;
-				}
-
-				return str;
-			}
-        </line>
-	
-	</tileentity>
-	
+  <!-- 大型坩埚   -->
+  <tileentity id="gt.multitileentity.multiblock.crucible">
+    <line displayname="当前温度">
+      return nbt['gt.temperature']+BLUE+" K"+" / " + KevinCap(nbt['gt.mte.id']) + Unit("K")
+    </line>
+    <line displayname="熔炼物种数">
+      return nbt['gt.materials']['size']+BLUE+" 种"
+    </line>
+    <line displayname="熔炼物1">
+      return (nbt['gt.materials']['0']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['0']['i'],"material")
+    </line>
+    <line displayname="熔炼物2">
+      return (nbt['gt.materials']['1']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['1']['i'],"material")
+    </line>
+    <line displayname="熔炼物3">
+      return (nbt['gt.materials']['2']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['2']['i'],"material")
+    </line>
+    <line displayname="熔炼物4">
+      return (nbt['gt.materials']['3']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['3']['i'],"material")
+    </line>
+    <line displayname="熔炼物5">
+      return (nbt['gt.materials']['4']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['4']['i'],"material")
+    </line>
+    <line displayname="熔炼物6">
+      return (nbt['gt.materials']['5']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['5']['i'],"material")
+    </line>
+    <line displayname="熔炼物7">
+      return (nbt['gt.materials']['6']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['6']['i'],"material")
+    </line>
+    <line displayname="熔炼物8">
+      return (nbt['gt.materials']['7']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['7']['i'],"material")
+    </line>
+    <line displayname="熔炼物9">
+      return (nbt['gt.materials']['8']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+getName(nbt['gt.materials']['8']['i'],"material")
+    </line>
+  </tileentity>
+  
 	<!-- 模具 -->
 	<tileentity id = "gt.multitileentity.mold">
 		<!-- TODO: 烫伤警告 -->
@@ -984,16 +979,16 @@
 
 		<line displayname = "水储量">
 			if(nbt['gt.tank.0'] != undefined){
-				return nbt['gt.tank.0']['Amount'] + "/4000" + Unit("L");
+				return nbt['gt.tank.0']['Amount'] + "/4000" + "mL";
 			}
-			return "0/4000" + Unit("L");
+			return "0/4000" + "mL";
 		</line>
 
 		<line displayname = "蒸汽储量">
 			if(nbt['gt.tank.1'] != undefined){
-				return nbt['gt.tank.1']['Amount'] + "/" + SteamCap(nbt) + Unit("L") + " - " + parseInt(nbt['gt.tank.1']['Amount'] / SteamCap(nbt) * 10000) / 100 + "%";
+				return nbt['gt.tank.1']['Amount'] + "/" + SteamCap(nbt) + "mL" + " - " + parseInt(nbt['gt.tank.1']['Amount'] / SteamCap(nbt) * 10000) / 100 + "%";
 			}
-			return "0/" + SteamCap(nbt) + Unit("L") + " - " + "0.00%";
+			return "0/" + SteamCap(nbt) + "mL" + " - " + "0.00%";
 		</line>
 		
 	</tileentity>
@@ -1030,9 +1025,9 @@
 
 		<line displayname = "蒸汽储量">
 			if(nbt['gt.tank.0'] != undefined){
-				return nbt['gt.tank.0']['Amount'] + "/" + bind(200,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * 200) + Unit("L");
+				return nbt['gt.tank.0']['Amount'] + "/" + bind(200,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * 200) + "mL";
 			}
-			return "0/" + bind(200,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * 200) + Unit("L");
+			return "0/" + bind(200,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * 200) + "mL";
 		</line>
 
 	</tileentity>
@@ -1106,9 +1101,9 @@
 
 		<line displayname = "蒸汽储量">
 			if(nbt['gt.tank.0'] != undefined){
-				return nbt['gt.tank.0']['Amount'] + "/" + bind(1,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","RU",1) * 2 * 4) + Unit("L");
+				return nbt['gt.tank.0']['Amount'] + "/" + bind(1,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","RU",1) * 2 * 4) + "mL";
 			}
-			return "0/" + bind(1,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","RU",1) * 2 * 4) + Unit("L");
+			return "0/" + bind(1,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","RU",1) * 2 * 4) + "mL";
 		</line>
 
 		<line displayname = "旋转方向">
@@ -1474,7 +1469,7 @@
 	<tileentity id = "gt.multitileentity.connector.pipe.fluid">
 	    <line displayname = "内容物">
 	    if(nbt['gt.tank.0']['Amount']!=undefined){
-		return fluidName(nbt['gt.tank.0']['FluidName'])+": "+GREEN+nbt['gt.tank.0']['Amount'] + Unit("L");}
+		return fluidName(nbt['gt.tank.0']['FluidName'])+": "+GREEN+nbt['gt.tank.0']['Amount'] + "mL";}
 		</line>
 	</tileentity>
 	
@@ -1537,26 +1532,45 @@
 
 	</tileentity>
 
-	<!-- 单方块储罐 -->
-	<tileentity id = "gt.multitileentity.tank.barrel.metal">
-		<line displayname = "流体存量">
-			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
-		</line>
+  <!-- 单方块木制储罐 -->
+  <tileentity id = "gt.multitileentity.tank.barrel.wood">
+    <line displayname = "流体存量">
+      return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
+    </line>
+  </tileentity>
 
-	</tileentity>
+  <!-- 单方块塑料储罐 -->
+  <tileentity id = "gt.multitileentity.tank.barrel.plastic">
+    <line displayname = "流体存量">
+      return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
+    </line>
+  </tileentity>
 
-	<!-- 多方块储罐 -->
-	<tileentity id = "gt.multitileentity.multiblock.tank.metal">
-		<line displayname = "流体存量">
-			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
-		</line>
+  <!-- 单方块金属储罐 -->
+  <tileentity id = "gt.multitileentity.tank.barrel.metal">
+    <line displayname = "流体存量">
+      return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
+    </line>
+  </tileentity>
 
-	</tileentity>
+  <!-- 多方块木制储罐 -->
+  <tileentity id = "gt.multitileentity.multiblock.tank.wooden">
+    <line displayname = "流体存量">
+      return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
+    </line>
+  </tileentity>
+
+  <!-- 多方块金属储罐 -->
+  <tileentity id = "gt.multitileentity.multiblock.tank.metal">
+    <line displayname = "流体存量">
+      return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
+    </line>
+  </tileentity>
 
 	<!-- 单元式流体容器 -->
 	<tileentity id = "gt.multitileentity.cell">
 		<line displayname = "流体存量">
-			return nbt['gt.tank']['Amount'] + "/1000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+			return nbt['gt.tank']['Amount'] + "/1000" + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -1564,7 +1578,7 @@
 	<!-- 瓷杯 -->
 	<tileentity id = "gt.multitileentity.cup">
 		<line displayname = "流体存量">
-			return nbt['gt.tank']['Amount'] + "/250" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+			return nbt['gt.tank']['Amount'] + "/250" + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -1572,7 +1586,7 @@
 	<!-- 陶杯 -->
 	<tileentity id = "gt.multitileentity.jug">
 		<line displayname = "流体存量">
-			return nbt['gt.tank']['Amount'] + "/2000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+			return nbt['gt.tank']['Amount'] + "/2000" + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -1580,7 +1594,7 @@
 	<!-- 量杯 -->
 	<tileentity id = "gt.multitileentity.measuring.pot">
 		<line displayname = "流体存量">
-			return nbt['gt.tank']['Amount'] + "/1000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+			return nbt['gt.tank']['Amount'] + "/1000" + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -1588,7 +1602,7 @@
 	<!-- 保温杯 -->
 	<tileentity id = "gt.multitileentity.thermos.can">
 		<line displayname = "流体存量">
-			return nbt['gt.tank']['Amount'] + "/4000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+			return nbt['gt.tank']['Amount'] + "/4000" + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -1632,7 +1646,7 @@
 		</line>
 
 		<line displayname = "输入流体">
-			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+			return nbt['gt.tank.in.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
 		<line displayname = "输出物品1">
@@ -1696,15 +1710,15 @@
 		</line>
 
 		<line displayname = "输出流体1">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return nbt['gt.tank.out.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 		<line displayname = "输出流体2">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return nbt['gt.tank.out.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
 		<line displayname = "输出流体3">
-			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+			return nbt['gt.tank.out.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -1748,7 +1762,7 @@
 		</line>
 
 		<line displayname = "输入流体">
-			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+			return nbt['gt.tank.in.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
 		<line displayname = "输出物品1">
@@ -1812,15 +1826,15 @@
 		</line>
 
 		<line displayname = "输出流体1">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return nbt['gt.tank.out.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 		<line displayname = "输出流体2">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return nbt['gt.tank.out.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
 		<line displayname = "输出流体3">
-			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+			return nbt['gt.tank.out.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -1864,7 +1878,7 @@
 		</line>
 
 		<line displayname = "输入流体">
-			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+			return nbt['gt.tank.in.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
 		<line displayname = "输出物品1">
@@ -1928,15 +1942,15 @@
 		</line>
 
 		<line displayname = "输出流体1">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return nbt['gt.tank.out.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 		<line displayname = "输出流体2">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return nbt['gt.tank.out.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
 		<line displayname = "输出流体3">
-			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+			return nbt['gt.tank.out.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -1980,7 +1994,7 @@
 		</line>
 
 		<line displayname = "输入流体">
-			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+			return nbt['gt.tank.in.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
 		<line displayname = "输出物品1">
@@ -2044,15 +2058,15 @@
 		</line>
 
 		<line displayname = "输出流体1">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return nbt['gt.tank.out.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 		<line displayname = "输出流体2">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return nbt['gt.tank.out.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
 		<line displayname = "输出流体3">
-			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+			return nbt['gt.tank.out.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -2096,27 +2110,27 @@
 		</line>
 
 		<line displayname = "输入流体1">
-			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+			return nbt['gt.tank.in.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
 		<line displayname = "输入流体2">
-			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
+			return nbt['gt.tank.in.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
 		</line>
 
 		<line displayname = "输入流体3">
-			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
+			return nbt['gt.tank.in.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
 		</line>
 
 		<line displayname = "输入流体4">
-			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
+			return nbt['gt.tank.in.3']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
 		</line>
 
 		<line displayname = "输入流体5">
-			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
+			return nbt['gt.tank.in.4']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
 		</line>
 
 		<line displayname = "输入流体6">
-			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
+			return nbt['gt.tank.in.5']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
 		</line>
 
 		<line displayname = "输出物品">
@@ -2130,11 +2144,11 @@
 		</line>
 
 		<line displayname = "输出流体1">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return nbt['gt.tank.out.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 		<line displayname = "输出流体2">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return nbt['gt.tank.out.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -2178,27 +2192,27 @@
 		</line>
 
 		<line displayname = "输入流体1">
-			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+			return nbt['gt.tank.in.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
 		<line displayname = "输入流体2">
-			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
+			return nbt['gt.tank.in.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
 		</line>
 
 		<line displayname = "输入流体3">
-			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
+			return nbt['gt.tank.in.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
 		</line>
 
 		<line displayname = "输入流体4">
-			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
+			return nbt['gt.tank.in.3']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
 		</line>
 
 		<line displayname = "输入流体5">
-			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
+			return nbt['gt.tank.in.4']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
 		</line>
 
 		<line displayname = "输入流体6">
-			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
+			return nbt['gt.tank.in.5']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
 		</line>
 
 		<line displayname = "输出物品">
@@ -2212,11 +2226,11 @@
 		</line>
 
 		<line displayname = "输出流体1">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return nbt['gt.tank.out.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 		<line displayname = "输出流体2">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return nbt['gt.tank.out.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -2224,7 +2238,7 @@
 	<!-- 榨汁机 -->
 	<tileentity id = "gt.multitileentity.juicer">
 		<line displayname = "输出流体">
-			return nbt['gt.tank.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.0']['FluidName']);
+			return nbt['gt.tank.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.0']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -2258,7 +2272,7 @@
 				return nbt['gt.invlist']['0']['Count'] + "/64" + Unit("个 ") + name(nbt['gt.invlist']['0']);
 			}
 			if(nbt['gt.tank'] != undefined){
-				return nbt['gt.tank']['Amount'] + "/8000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+				return nbt['gt.tank']['Amount'] + "/8000" + "mL" + " " + fluidName(nbt['gt.tank']['FluidName']);
 			}
 			return "无";
 		</line>
@@ -2581,7 +2595,7 @@
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.0']['Count'] + Unit("个 ") + name(nbt['gt.invout.0']) + " - " + nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
+			return nbt['gt.invout.0']['Count'] + Unit("个 ") + name(nbt['gt.invout.0']) + " - " + nbt['gt.tankout.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
 		</line>
 
 		<line displayname = "输入物品">
@@ -2600,7 +2614,7 @@
 		</line>
 
 		<line displayname = "输出流体">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return nbt['gt.tank.out.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -2734,27 +2748,27 @@
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
+			return nbt['gt.tankout.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.1']['FluidName']);
+			return nbt['gt.tankout.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.1']['FluidName']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.2']['FluidName']);
+			return nbt['gt.tankout.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.2']['FluidName']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.3']['FluidName']);
+			return nbt['gt.tankout.3']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.3']['FluidName']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.4']['FluidName']);
+			return nbt['gt.tankout.4']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.4']['FluidName']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.5']['FluidName']);
+			return nbt['gt.tankout.5']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.5']['FluidName']);
 		</line>
 
 		<line displayname = "物品输入">
@@ -2798,27 +2812,27 @@
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+			return nbt['gt.tank.in.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
+			return nbt['gt.tank.in.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
+			return nbt['gt.tank.in.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
+			return nbt['gt.tank.in.3']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
+			return nbt['gt.tank.in.4']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
+			return nbt['gt.tank.in.5']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
 		</line>
 
 		<line displayname = "物品输出">
@@ -2870,27 +2884,27 @@
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return nbt['gt.tank.out.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return nbt['gt.tank.out.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+			return nbt['gt.tank.out.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.3']['FluidName']);
+			return nbt['gt.tank.out.3']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.3']['FluidName']);
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.4']['FluidName']);
+			return nbt['gt.tank.out.4']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.4']['FluidName']);
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.5']['FluidName']);
+			return nbt['gt.tank.out.5']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.5']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -2971,27 +2985,27 @@
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
+			return nbt['gt.tankout.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.1']['FluidName']);
+			return nbt['gt.tankout.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.1']['FluidName']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.2']['FluidName']);
+			return nbt['gt.tankout.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.2']['FluidName']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.3']['FluidName']);
+			return nbt['gt.tankout.3']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.3']['FluidName']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.4']['FluidName']);
+			return nbt['gt.tankout.4']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.4']['FluidName']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.tankout.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.5']['FluidName']);
+			return nbt['gt.tankout.5']['Amount'] + "mL" + " " + fluidName(nbt['gt.tankout.5']['FluidName']);
 		</line>
 
 		<line displayname = "物品输入">
@@ -3035,27 +3049,27 @@
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+			return nbt['gt.tank.in.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
+			return nbt['gt.tank.in.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
+			return nbt['gt.tank.in.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
+			return nbt['gt.tank.in.3']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
+			return nbt['gt.tank.in.4']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
 		</line>
 
 		<line displayname = "流体输入">
-			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
+			return nbt['gt.tank.in.5']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
 		</line>
 
 		<line displayname = "物品输出">
@@ -3107,27 +3121,27 @@
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return nbt['gt.tank.out.0']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return nbt['gt.tank.out.1']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+			return nbt['gt.tank.out.2']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.3']['FluidName']);
+			return nbt['gt.tank.out.3']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.3']['FluidName']);
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.4']['FluidName']);
+			return nbt['gt.tank.out.4']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.4']['FluidName']);
 		</line>
 
 		<line displayname = "流体输出">
-			return nbt['gt.tank.out.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.5']['FluidName']);
+			return nbt['gt.tank.out.5']['Amount'] + "mL" + " " + fluidName(nbt['gt.tank.out.5']['FluidName']);
 		</line>
 
 	</tileentity>
